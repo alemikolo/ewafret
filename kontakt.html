@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">          
+    <meta name="viewport" content="width=device-width, initial-scale=1">        
+    <meta name="author" content="Aleksander Fret" />
+    <meta name="application-name" content="NetBeans IDE" />        
+    <meta name="description" content="Ewa Fret - ilustratorka książek, czasopism, okładek i kartek okolicznościowych.">
+    <meta name="keywords" content="Ewa Fret, Fret, ilustracja, ilustratorka, ilustrator, rysowniczka, malarka, artysta, artystka, artystycznie, ilustrowane, ilustrowana, ilustracja reklamowa, ilustracje komercyjne, tworzenie ilustracji, portfolio, ilustracje dla dzieci, ilustrowanie książek, ilustrowanie czasopism, projekty okładek książek i czasopism, projekty okładek płyt, grafika ilustracyjna, malowanie, rysowanie, kartki okolicznościowe, kartki świąteczne, ilustracje na kartki pocztowe, kartki pocztowe, tworzenie kartek, grafika na kartki, rękodzieła, prace artystyczne, dekoracje, ozdoby, dekoracje i ozdoby świąteczne, ozdoby na zamówienie, prace" >
+    <title>Ilustratorka Ewa Fret - portfolio.</title>
+    <link rel="shortcut icon" href="icons/webicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/vendor/slicknav/slicknav.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<div><p class="oldbrowser">Używasz przeglądarki, która nie zapewnia odpowiedniego poziomu bezpieczeństwa. Proszę, <a href="http://browsehappy.com/">zaktualizuj swoją przeglądarkę</a> lub <a href="http://www.google.com/chromeframe/?redirect=true">aktywuj Google Chrome Frame</a>, by ulepszyć wyświetalnie.</p></div>
+<![endif]-->
+
+<!--Ostrzeżenie-->
+<div><p class="js_monit">Przeglądarka, z&nbsp;której korzystasz ma wyłączoną obsługę JavaScript. Proszę, włącz obsługę JavaScript, by&nbsp;ulepszyć wyświetalnie.</p></div>
+
+<!--Nagłówek-->
+<header>
+        <div id="header_bar">
+            <div id="header_container">
+                <!--Logo-->
+                <div id="logo">
+                    <h1 id="tytul"><a href="index.html">Ewa Fret</a></h1>
+                </div>
+                <!--Menu-->
+                <nav id="top_menu">
+                    <ul id="menu">
+                        <li><a href="index.html" class="main_link">start</a></li>
+                        <li><a href="omnie.html" class="main_link">o mnie</a></li>
+                        <li><a href="ilustracje.html" class="main_link">ilustracje</a></li>
+                        <li><a href="kartki.html" class="main_link">kartki</a></li>
+                        <li><a href="rekodziela.html" class="main_link">rękodzieła</a></li>
+                        <li><a href="kontakt.php" class="main_link">kontakt</a></li>
+                    </ul>        
+                </nav>                
+            </div>
+        </div>
+    </header>
+
+<!--Treść-->
+<section>
+    <div id="page_container">                    
+        <article>
+            <div id="kontakt" class="tresc">
+                <h2 class="article_header">Kontakt</h2>
+                <div id="no_js_form_monit"><p>Formularz kontaktowy wymaga aby w&nbsp;Przeglądarce włączona była obsługa Javascript. Proszę włącz obsługę JavaScript w&nbsp;swojej przeglądarce aby poprawić wyświetlanie i&nbsp;uzyskać dostep do tego formularza.</p></div>
+                <? if($aMonits['faild']['error']){?> <div class="alert"><?=$aMonits['failed']['error']?></div><?}?>
+                <form action="kontakt.php" method="post" autocomplete="off">
+                    <fieldset>
+                        <label for="imie" class="main_label">Imię:</label>
+                        <input id="imie" type="text" name="name" placeholder="" maxlength="30" autofocus="autofocus" value="<?=$aMonits['name']['value']?>"/>                                        <? if($aMonits['name']['error']){?> <div class="alert"><?=$aMonits['name']['error']?></div><?}?>
+                        <label for="nazwisko" class="main_label">Nazwisko:</label>
+                        <input id="nazwisko" type="text" name="surname" placeholder="" maxlength="30" value="<?=$aMonits['surname']['value']?>"/>
+                        <? if($aMonits['surname']['error']){?> <div class="alert"><?=$aMonits['surname']['error']?></div><?}?>
+                        <label for="email" class="main_label">E-mail:<span>*</span></label>                        
+                        <input id="email" type="text" name="email" maxlength="100" class="required" value="<?=$aMonits['email']['value']?>"/>
+                        <? if($aMonits['email']['error']){?> <div class="alert"><?=$aMonits['email']['error']?></div><?}?>
+                        <label for="temat" class="main_label">Temat:<span>*</span></label>
+                        <input id="temat" type="text" name="subject" maxlength="500" class="required" value="<?=$aMonits['subject']['value']?>"/>
+                        <? if($aMonits['subject']['error']){?> <div class="alert"><?=$aMonits['subject']['error']?></div><?}?>
+                        <label for="tresc" class="main_label">Treść:<span>*</span></label>
+                        <textarea id="tresc" name="content" maxlength="2000" class="required" placeholder=""><?=$aMonits['content']['value']?></textarea>
+                        <? if($aMonits['content']['error']){?> <div class="alert"><?=$aMonits['content']['error']?></div><?}?>
+                        <input id="sendemailcopy" class="css-checkbox" type="checkbox" name="sendemailcopy" value="1"/>
+                        <label for="sendemailcopy" class="css-label">Wyślij do mnie kopię tej wiadomości</label>
+                        <input type="hidden" name="iform" value="1" />
+                        <input id="robot" type="checkbox" name="robot" value="1"/>                        
+                        <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6Le3aNoSAAAAAMzqxmNnD6CnzKgbhenePFEdDZ8I"></div>
+                        <? if($aMonits['g-recaptcha-response']['error']){?> <div class="alert"><?=$aMonits['g-recaptcha-response']['error']?></div><?}?>
+                        <input id="submit" type="submit" name="submit" value="Wyślij" />
+                    </fieldset>
+                </form>
+                <p>(*) - pola wymagane</p>                
+            </div>               
+        </article>  
+    </div>        
+</section>
+
+<!--Stopka-->
+<footer>
+    <div id="footer_container">
+        <p><a href="index.html" title="Ilustratorka Ewa Fret">&copy; <span id="years"></span> Ewa Fret</a></p>
+    </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery/jquery-1.11.3.min.js"><\/script>');</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="js/vendor/slicknav/jquery.slicknav.js"></script>
+<script src="js/vendor/checkbox/jspatch.js"></script>
+<script src="js/walidator.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
