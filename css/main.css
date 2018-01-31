@@ -31,7 +31,7 @@ body{
     font-size: 16px;
     font-size: 1em;
     color: #000000;
-    text-align: center;    
+    text-align: center;
     background-color: #ffffff;}
 
 .oldbrowser, .js_monit{
@@ -41,7 +41,7 @@ body{
     width: 100%;
     color: #ffffff;
     font-size: 1.25em;
-    background-color: #333333;   
+    background-color: #333333;
     -index: 9999;}
 
 #no_js_form_monit{
@@ -69,7 +69,7 @@ body{
     -webkit-transition: all 0.5s;
     transition: all 0.5s;}
 
-#header_bar{    
+#header_bar{
     position: relative;
     z-index: 100;
     width: 100%;
@@ -86,7 +86,7 @@ body{
 
 #logo{
     text-align: left;
-    float: left;    
+    float: left;
     padding-left: 20px;
     height: 100%;}
 
@@ -165,12 +165,12 @@ body{
 #subtitle{
     display: block;}
 
-#subtitle img{    
+#subtitle img{
     display:block;
     z-index: 101;
     position: relative;
     width: 200px;
-    top: -20px;    
+    top: -20px;
     margin-left: 35px;}
 
 #main {
@@ -201,7 +201,7 @@ body{
     color: #000000;
     text-decoration: none;}
 
-#main a:hover img{    
+#main a:hover img{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     -o-opacity: 0.7;
     -ms-opacity: 0.7;
@@ -249,38 +249,38 @@ body{
     padding: 0px;
     float: left;
     position: relative;
-    max-height: 250px; 
+    max-height: 250px;
     width: 25%;
     padding-bottom:25%;
     overflow: hidden;}
 
 
-.thumbnail img{
+.thumbnail a img{
     display: block;
     position: absolute;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    -o-opacity: 1.0;
-    -ms-opacity: 1.0;
-    -moz-opacity: 1.0;
-    -khtml-opacity: 1.0;
-    -webkit-opacity: 1.0;
-    opacity: 1.0;}
+    -o-opacity: 1;
+    -ms-opacity: 1;
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    -webkit-opacity: 1;
+    opacity: 1;}
 
-.thumbnail img:hover {
+.thumbnail a:hover img {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     -o-opacity: 0.7;
     -ms-opacity: 0.7;
     -moz-opacity: 0.7;
     -khtml-opacity: 0.7;
     -webkit-opacity: 0.7;
-    opacity: 0.7;}
+    opacity: 0.7; }
 
-.square{    
-    width: 100%;    
+.square{
+    width: 100%;
     height: auto;}
 
-.square2{    
-    width: auto;    
+.square2{
+    width: auto;
     height: 100%;}
 
 .portrait{
@@ -299,7 +299,7 @@ body{
 
 .required{}
 
-#kontakt > p {    
+#kontakt > p {
     display: none;
     width: 65%;
     margin-left: auto;
@@ -311,7 +311,7 @@ body{
     margin-left: auto;
     margin-right: auto;}
 
-#kontakt form label {    
+#kontakt form label {
     display: block;
     width: 96%;
     text-align: left;
@@ -336,7 +336,7 @@ body{
     -webkit-box-sizing: border-box;
      box-sizing: border-box;}
 
-#kontakt form input {    
+#kontakt form input {
     height: 40px;
     margin-bottom: 15px;
     font-family: 'ubuntulight';
@@ -383,7 +383,7 @@ input[type=checkbox].css-checkbox {
 
 input[type=checkbox].css-checkbox + label.css-label, input[type=checkbox].css-checkbox + label.css-label.clr {
     padding-left:50px;
-    height:35px; 
+    height:35px;
     display:inline-block;
     background-repeat:no-repeat;
     background-position: 0 0;
@@ -410,7 +410,7 @@ label.css-label {
     -ms-user-select: none;
     user-select: none;}
 
-   
+
 #kontakt form #submit {
     margin-left: auto;
     margin-right: auto;
@@ -434,7 +434,7 @@ label.css-label {
 #kontakt form #submit:hover {
     position:relative;
     z-index:200;
-    text-decoration: underline;   
+    text-decoration: underline;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);}
@@ -486,7 +486,7 @@ label.css-label {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    padding: 10%; 
+    padding: 10%;
     background-color: #92d050;
     color: #000000;
     font-size: 1.5em;
@@ -523,13 +523,13 @@ label.css-label {
 
 @media screen and (max-width: 768px){
     #subtitle{
-        display: none;}    
+        display: none;}
     #main{
         margin-top: 40px;}
     #main figcaption{
         font-size: 1.25em;}
     #o_mnie p, #o_mnie ul{
-        text-align: left;}     
+        text-align: left;}
     .thumbnail{
         width: 33.3333%;
         padding-bottom: 33.3333%;}
@@ -568,7 +568,7 @@ label.css-label {
         width: 80%;
         min-width: 200px;
         max-width: 400px;
-	clear: both;		
+	clear: both;
         margin: 0 10% 1em 10%;}
     #o_mnie p {
         clear:both;}
@@ -577,7 +577,7 @@ label.css-label {
         padding-bottom: 50%;}
     #kontakt form{
         width: 100%;}}
-    
+
 @media screen and (max-width: 400px){
     #logo h1 a{
         padding-top: 9px;
@@ -586,19 +586,10 @@ label.css-label {
         font-size: 2.2em;
         font-variant: small-caps;
         color: #000000;
-        text-decoration: none;} 
+        text-decoration: none;}
     .thumbnail{
         width: 100%;
         padding-bottom: 100%;}}
-
-.thumbnail a:hover img{    
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    -o-opacity: 1;
-    -ms-opacity: 1;
-    -moz-opacity: 1;
-    -khtml-opacity: 1;
-    -webkit-opacity: 1;}
-
 
 /*FORMATOWANIE STOPKI*/
 
@@ -616,7 +607,7 @@ label.css-label {
     max-width: 1040px;
     min-width: 300px;
     margin: 30px auto 30px auto;
-    padding-top: 10px; 
+    padding-top: 10px;
     border-top: 1px solid #000000;}
 
 #footer_container a{
@@ -643,19 +634,19 @@ label.css-label {
 
 @media screen and (max-width: 768px){
     #start .redirect {
-        margin: 10%;        
+        margin: 10%;
         font-size: 1.3em;}
 }
 
 @media screen and (max-width: 550px){
     #start .redirect {
-        margin: 5%;        
+        margin: 5%;
         font-size: 1.05em;}
 }
 
 @media screen and (max-width: 400px){
     #start .redirect {
         margin:0px;
-        min-width:200px; 
+        min-width:200px;
         font-size: 0.8em;}
 }
