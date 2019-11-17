@@ -9,8 +9,9 @@ if(filter_input(INPUT_POST, 'iform', FILTER_VALIDATE_INT)){
         exit();
     }
     else {
-        $oMailer = new Mailer($aValidateParams, $aMessage, $sPrivateKey);
+        $oMailer = new Mailer($aValidateParams, $aMessage);
         $aMonits = $oMailer->SendEmail();
     }    
 }
+
 include_once 'kontakt.html'; 

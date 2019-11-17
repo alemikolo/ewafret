@@ -63,26 +63,26 @@ class Mailer {
     private $aMessage = [];              // tablica z ustawieniami wiadomości
     private $aErrors = [];               // tablica z błędami
     private $aFormKeys = [];             // tablica z kluczami wartości przesłanych metodą $_POST 
-    private $sPrivateKey;                // decyduje czy ma być wysłana informacja zwrotna do nadawcy
     
 
     /* tworząc obiekt przekazujemy do konstruktora tablicę z parametrami do
      * walidacji, tablicę z ustawieniami wiadomości, ew. Secret Key od Googla
      * oraz ew. w czwartej zmiennej przekazujemy FALSE jeśli nie chcemy wysyłać
      * potwierdzenia nadawcy. */
-    public function __construct(array $aValidateParams, array $aMessage, $sPrivateKey = '') {
+    public function __construct(array $aValidateParams, array $aMessage) {
         $this->aFormKeys = array_keys(filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW)); // pobiera klucze tablicy $_POST
         $this->aValidateParams = $aValidateParams; // parametry walidacji
-        $this->aMessage = $aMessage; // ustawienia wiadomości
-        $this->sPrivateKey = $sPrivateKey; // Secret Key ReCaptcha od Googla        
+        $this->aMessage = $aMessage; // ustawienia wiadomości   
     }    
     /* funkcja wysyła email lub zwraca błąd */
-    public function SendEmail() {     
+    public function SendEmail() {  
+        if (!in_array('rodo', $this->aFormKeys)) {
+            $this->aErrors['rodo'] = $this->aValidateParams['rodo']['null'];
+        }   
         /* wywołuje funkcję walidującą dane przesłane w formularzu przekazując
          * jej tablicę z kluczami tablicy $_POST (patrz wyżej) */
         $this->ValidateForm($this->aFormKeys);
         /* jeśli nie ma błędów - przechodzi dalej do wysyłania wiadomości */
-        //var_dump($this->aErrors);exit();
         if(empty($this->aErrors)){           
             /* wywołuje funkcję, która wysyła wiadomość, wczytuje stronę 
              * z podziękowaniem albo zwraca błędy. */ 
@@ -158,22 +158,17 @@ class Mailer {
      * UŻYTKOWNIKA NIE ZOSTANĄ ZWALIDOWANE!!!).*/
     private function FilterFormData($sKey) {
         /* Jeśli wartość nie jest pusta rozpoczyna walidację */
-        if(filter_input(INPUT_POST, $sKey, FILTER_UNSAFE_RAW) != '') {
-            /* Jeśli wartość klucza to 'g-recaptcha-response' wówczas wywoływana
-             * jest zewnętrzna funkcja walidująca CaptchaValid. W innym razie
-             * walidacja przeprowadzana jest tutaj. Jeśli wartość przejdzie
+        if(trim(filter_input(INPUT_POST, $sKey, FILTER_UNSAFE_RAW)) !== '') {
+            /* 
+             * Walidacja przeprowadzana jest tutaj. Jeśli wartość przejdzie
              * walidację zapisywana jest do tablicy $this->aFormData, jeśli
              * nie przejdzie - czyli filter_input zwróci FALSE, w tablicy
              * $this->aErrors zapisywany jest odpowiedni komunikat błędu
              * zdefiniowany wcześniej w tablicy z parametrami walidacji. */
-            if($sKey == 'g-recaptcha-response') {
-                $this->CaptchaValid($sKey, $this->sPrivateKey);
-            }
-            else {
-                $this->aFormData[$sKey] = strip_tags(filter_input(INPUT_POST, $sKey, $this->aValidateParams[$sKey]['filter'], $this->aValidateParams[$sKey]['options']));
+
+            $this->aFormData[$sKey] = strip_tags(filter_input(INPUT_POST, $sKey, $this->aValidateParams[$sKey]['filter'], $this->aValidateParams[$sKey]['options']));
                 
-            }
-            if($sKey != 'g-recaptcha-response' && $this->aFormData[$sKey] === '') {
+            if($this->aFormData[$sKey] === '') {
                 $this->aFormData[$sKey] = filter_input(INPUT_POST, $sKey, FILTER_UNSAFE_RAW);
                 $this->aErrors[$sKey] = $this->aValidateParams[$sKey]['error'];
             }
@@ -184,29 +179,8 @@ class Mailer {
              *  z parametrami walidacji. */
             $this->aErrors[$sKey] = $this->aValidateParams[$sKey]['null'];
         }
-    }   
-    /* Funkcja ta waliduje tylko parametr 'g-recaptcha-response'. Jeśli
-     * walidacja nie powiedzie się (rezultat ostatnie instrukcji warunkowej
-     * zwróci TRUE funkcja ustawi odpowiedni błąd. */
-    private function CaptchaValid($sKey, $sPrivateKey) {        
-        $sUrl = 'https://www.google.com/recaptcha/api/siteverify';
-        $aData = [
-            'secret' => $sPrivateKey,
-            'response' => filter_input(INPUT_POST, $sKey, FILTER_SANITIZE_STRING),
-            'remoteip' => filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP)];        
-        $aOptions = [
-            'http' => [
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($aData)]];
-        $rContext = stream_context_create($aOptions);
-        $rResult = file_get_contents($sUrl, false, $rContext);
-        
-        if(!json_decode($rResult)->success){
-            var_dump(json_decode($rResult)->success);exit();
-            $this->aErrors[$sKey] = $this->aValidateParams[$sKey]['error'];
-        }        
-    }    
+    }
+
     /* usuwane dane z tablicy $_POST */   
     public function __destruct(){
         array_splice($_POST, 0);
