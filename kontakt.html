@@ -131,9 +131,7 @@
                   maxlength="2000"
                   class="required validable"
                   placeholder=""
-                >
-                    <?=(isset($aMonits)) ? $aMonits['content']['value'] : ''?>
-                </textarea>
+                ><?=(isset($aMonits)) ? $aMonits['content']['value'] : ''?></textarea>
                 <div class="alert-error"><?=(isset($aMonits['content']['error'])) ? $aMonits['content']['error'] : ''?></div>
                 <div id="rodo-input">
                   <div id="rodo-message">
