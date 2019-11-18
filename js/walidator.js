@@ -104,7 +104,6 @@ $(document).ready(function() {
           oField.attr("type") === "checkbox" &&
           oField.attr("id") !== "rodo"
         ) {
-          console.log("nie rodo");
           oField
             .addClass("error")
             .next()
@@ -117,7 +116,6 @@ $(document).ready(function() {
           oField.attr("type") === "checkbox" &&
           oField.attr("id") === "rodo"
         ) {
-          console.log("rodo");
           oField.addClass("error");
           $("#rodo-input").after(
             '<div class="alert-error">' +
@@ -154,7 +152,7 @@ $(document).ready(function() {
   $("#submit").on("click", function(event) {
     var bDataValid = true;
     if (!$("#robot").is(":checked")) {
-      $(".validable, .g-recaptcha").each(function() {
+      $(".validable").each(function() {
         var oField = $(this);
         if (oField.data("valid") === undefined) {
           ValidateForm(null, oField);

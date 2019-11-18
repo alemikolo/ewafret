@@ -10,7 +10,7 @@ if(filter_input(INPUT_POST, 'iform', FILTER_VALIDATE_INT)){
     }
     else {
         $oMailer = new Mailer($aValidateParams, $aMessage);
-        $aMonits = $oMailer->SendEmail();
+        $aMonits = $oMailer->sendEmail();
     }    
 }
 
