@@ -726,7 +726,7 @@ label.css-label {
     width: 80%;
   }
   #kontakt form label {
-    width: 85%;
+    width: 96%;
     font-size: 1.1em;
   }
   #kontakt form input,
@@ -873,8 +873,7 @@ label.css-label {
 
 #rodo-message {
   background-color: #222;
-  width: 80%;
-  margin: 0 10%;
+  width: 100%;
   color: #fff;
   padding: 5px;
   font-size: 1rem;
@@ -954,6 +953,15 @@ label.css-label {
 @media screen and (max-width: 500px) {
   #rodo-message {
     font-size: 0.75rem;
+    width: 96%;
+    margin: 0 2%;
+  }
+  #rodo-message p {
+    padding: 0px 20px 20px;
+    text-align: left;
+  }
+  #rodo-btn {
+    font-size: 1rem;
   }
 }
 
